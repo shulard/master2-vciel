@@ -1,0 +1,18 @@
+{
+    "size": 0,
+    "aggregations": {
+        "date": {
+            "date_histogram": {
+                "field": "post_date",
+                "interval": "year"
+            },
+            "aggregations": {
+                "names": {
+                    "terms": {
+                        "field": "name"
+                    }
+                }
+            }
+        }
+    }
+}

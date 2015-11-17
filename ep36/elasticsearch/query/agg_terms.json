@@ -1,0 +1,19 @@
+{
+    "aggregations": {
+        "types": {
+            "terms": {
+                "field": "_type"
+            }
+        },
+        "messages": {
+            "terms": {
+                "field": "message"
+            }
+        },
+        "names": {
+            "terms": {
+                "field": "name"
+            }
+        }
+    }
+}

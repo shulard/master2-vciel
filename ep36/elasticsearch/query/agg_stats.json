@@ -1,0 +1,10 @@
+{
+    "size": 0,
+    "aggregations": {
+        "nbPagesStats": {
+            "extended_stats": {
+                "field": "nbpages"
+            }
+        }
+    }
+}

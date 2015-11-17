@@ -1,0 +1,5 @@
+{
+    "name": "<?php $a = ['Ernest Emingway', 'Antoine de St Exupery', 'JRR Tolkien', 'Jules Verne', 'Roald Dahl']; echo $a[array_rand($a)]; ?>",
+    "post_date": "<?= date('Y-m-d', rand(1, time())) ?>",
+    "nbpages": "<?= rand(1, 1500) ?>"
+}
