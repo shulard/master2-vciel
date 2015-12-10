@@ -14,7 +14,7 @@
                 font-size : 3.2em;
             }
 
-            div {
+            main div {
                 background-color : yellow;
                 padding:  10px;
                 box-sizing: border-box;
@@ -22,15 +22,15 @@
                 columns: 3;
             }
 
-            div:first-child {
+            main div:first-child {
                 background-color : green;
             }
 
-            div:last-child {
+            main div:last-child {
                 background-color : red;
             }
 
-            div:nth-child(3)
+            main div:nth-child(3)
             {
                 color: purple;
             }
@@ -81,6 +81,23 @@
                     width: 100%;
                 }
             }
+            body#map {
+                width: 100%;
+                height: 100%;
+            }
+            div#map-container {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                display: none;
+            }
+            body#map #map-container {
+                display: block;
+                background-color: none;
+            }
+            body#map main {
+                display: none;
+            }
         </style>
     </head>
     <body>
@@ -108,5 +125,52 @@
             <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
             <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
         </main>
+        <div id="map-container"></div>
+        <button type="button" onclick="javascript:requestGeoloc();">Demander la géoloc</button>
+        <script type="text/javascript">
+            /**
+             * Request user Geoloc
+             */
+            function requestGeoloc()
+            {
+                if ("geolocation" in navigator) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        //Faire quelque chose avec la position
+                        loadGmap(position.coords.latitude, position.coords.longitude);
+                    }, function() {
+                        //Erreur l'utilisateur a refusé
+                        alert('Demande refusée!');
+                    });
+                } else {
+                  alert("Le service de géolocalisation n'est pas disponible sur votre ordinateur.");
+                }
+            }
+
+            /**
+             * Load Google Map API and display map
+             * @param  {string} lat Latitude
+             * @param  {string} lng Longitude
+             */
+            function loadGmap(lat, lng)
+            {
+                var script = document.createElement('script');
+                script.setAttribute('type', 'text/javascript');
+                script.src = "http://maps.googleapis.com/maps/api/js";
+                script.onload = function() {
+                    //Ici Google Map est chargé !
+                    document.body.setAttribute('id', 'map');
+                    var map = new google.maps.Map(document.getElementById('map-container'), {
+                        center: {lat: lat, lng: lng},
+                        zoom: 12
+                    });
+                    new google.maps.Marker({
+                        position: {lat: lat, lng: lng},
+                        map: map,
+                        title: 'Hello World!'
+                    });
+                };
+                document.body.appendChild(script);
+            }
+        </script>
     </body>
 </html>
