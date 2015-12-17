@@ -100,10 +100,13 @@
             }
         </style>
     </head>
-    <body>
+    <body onload="onLoad();">
         <header>
             <h1>En voici une super page web !</h1>
         </header>
+        <canvas width="200" height="200">
+            <p>Youpi un canvas!</p>
+        </canvas>
         <main class="inline-block">
             <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
             <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
@@ -170,6 +173,41 @@
                     });
                 };
                 document.body.appendChild(script);
+            }
+
+            function onLoad()
+            {
+                var canvas = document.getElementsByTagName('canvas')[0];
+                if( canvas.getContext ) {
+                    playWithContext(canvas.getContext('2d'));
+                    drawPicture(canvas.getContext('2d'));
+                } else {
+                    //Canvas n'est pas supporté ici
+                }
+
+                function playWithContext(ctx)
+                {
+                    ctx.fillStyle = "rgb(200,0,0)";
+                    ctx.fillRect (10, 10, 55, 50);
+                    ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+                    ctx.fillRect (30, 30, 55, 50);
+
+                    ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+                    ctx.fillRect(100,25,100,100);
+                    ctx.clearRect(120,45,60,60);
+                    ctx.strokeRect(125,50,50,50);
+                }
+                function drawPicture(ctx) {
+                    var img = new Image();
+                    img.onload = function(){
+                        for (var i=0;i<4;i++){
+                            for (var j=0;j<3;j++){
+                               ctx.drawImage(img,j*50,i*38,50,38);
+                            }
+                        }
+                    };
+                    img.src = 'https://mdn.mozillademos.org/files/5397/rhino.jpg';
+                }
             }
         </script>
     </body>
