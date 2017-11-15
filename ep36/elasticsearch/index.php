@@ -8,7 +8,7 @@ function getResult($h, $redirect = true) {
     $result = curl_exec($h);
     if( "2" !== substr(curl_getinfo($h, CURLINFO_HTTP_CODE), 0, 1) ) {
         var_dump($result);
-        exit('Erreur lors l\'operation : '.PHP_EOL."<pre>".var_export(json_decode($result, true), true)."</pre>");
+        exit('Erreur lors l\'operation : '.PHP_EOL."<pre><code class=\"language-json\">".var_export(json_decode($result, true), true)."</code></pre>");
     } elseif( $redirect ) {
         header('Location: '.ROOT);
     }
@@ -44,7 +44,7 @@ if( isset($_POST['create']) ) {
     curl_setopt_array($h, [
         CURLOPT_URL => ES_URL.'/'.$_POST['name'],
         CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_POST => true
+        CURLOPT_CUSTOMREQUEST => 'PUT'
     ]);
     getResult($h);
 }
@@ -70,7 +70,10 @@ if( isset($_POST['index']) ) {
     curl_setopt_array($h, [
         CURLOPT_URL => $url,
         CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_POST => true
+        CURLOPT_POST => true,
+        CURLOPT_HTTPHEADER => [
+            'Content-Type: application/json'
+        ]
     ]);
     while( $nb > 0 ) {
         ob_start();
@@ -95,7 +98,10 @@ if( isset($_POST['search']) ) {
         CURLOPT_URL => $url,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_POSTFIELDS => $buffer,
-        CURLOPT_POST => true
+        CURLOPT_POST => true,
+        CURLOPT_HTTPHEADER => [
+            'Content-Type: application/json'
+        ]
     ]);
     $queryResult = getResult($h, false);
 }
@@ -111,7 +117,11 @@ if( isset($_POST['mapping']) ) {
     curl_setopt_array($h, [
         CURLOPT_URL => $url,
         CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_POSTFIELDS => $buffer
+        CURLOPT_POSTFIELDS => $buffer,
+        CURLOPT_CUSTOMREQUEST => 'PUT',
+        CURLOPT_HTTPHEADER => [
+            'Content-Type: application/json'
+        ]
     ]);
     curl_setopt($h, CURLOPT_CUSTOMREQUEST, 'PUT');
     $mappingResult = getResult($h, false);
