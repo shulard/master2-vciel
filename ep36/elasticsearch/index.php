@@ -126,12 +126,14 @@ curl_close($h);
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ElasticSearch demo</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="assets/prism.css" />
+        <script type="text/javascript" src="assets/prism.js"></script>
     </head>
     <body>
         <div class="jumbotron">
             <div class="container">
                 <h1>ElasticSearch <small><a href="<?= ES_URL ?>"><?= ES_URL ?></a></small></h1>
-                <pre><?= $nodeDetail ?></pre>
+                <pre><code class="language-json"><?= $nodeDetail ?></code></pre>
             </div>
         </div>
         <div class="container">
@@ -237,8 +239,8 @@ curl_close($h);
                     </form>
                     <?php if( isset($queryResult) ): ?>
                         <h3>Résultat de la requête <code><?= $_POST['query']; ?></code></h3>
-                        <pre><?= file_get_contents(__DIR__.'/query/'.$_POST['query']); ?></pre>
-                        <pre><?= $queryResult; ?></pre>
+                        <pre><code class="language-json"><?= file_get_contents(__DIR__.'/query/'.$_POST['query']); ?></code></pre>
+                        <pre><code class="language-json"><?= $queryResult; ?></code></pre>
                     <?php endif; ?>
                 </div>
             </div>
@@ -267,7 +269,7 @@ curl_close($h);
                         <input type="submit" class="btn btn-warning" name="mapping" value="Enregistrer" />
                     </form>
                     <?php if( isset($mappingResult) ): ?>
-                        <pre><?= $mappingResult; ?></pre>
+                        <pre><code class="language-json"><?= $mappingResult; ?></code></pre>
                     <?php endif; ?>
                 </div>
             </div>
