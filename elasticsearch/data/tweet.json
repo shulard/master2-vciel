@@ -1,5 +1,5 @@
 {
     "user": "<?php $a = ['truite', 'toto', 'tata', 'titi']; echo $a[array_rand($a)]; ?>",
-    "post_date": "<?= date('d-m-Y', rand(1, time())) ?>",
+    "post_date": "<?= date('Y-m-d', rand(1, time())) ?>",
     "message": "<?php $a = ['Un message super', 'Tweet cool']; echo $a[array_rand($a)]; ?>"
 }
