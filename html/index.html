@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8" />
+        <title>EP23 - séance 4</title>
+        <style type="text/css">
+            body {
+                font-size : 10px;
+            }
+
+            h1 {
+                color : red;
+                font-size : 3.2em;
+            }
+
+            main div {
+                background-color : yellow;
+                padding:  10px;
+                box-sizing: border-box;
+                word-wrap: break-word;
+                columns: 3;
+                -moz-columns: 3;
+                -webkit-columns: 3;
+            }
+
+            main div:first-child {
+                background-color : green;
+            }
+
+            main div:last-child {
+                background-color : red;
+            }
+
+            main div:nth-child(3)
+            {
+                color: purple;
+            }
+
+            main.inline-block div {
+                display: inline-block;
+                margin-left: -4px;
+                width: 33.3333%;
+            }
+            main.inline-block div:first-child {
+                margin-left: 0px;
+            }
+            main.float div {
+                width: 33.3333%;
+                float: left;
+            }
+            main.float div:last-child:after {
+                clear: left;
+            }
+            main.table {
+                display: table;
+            }
+            main.table div {
+                display: table-cell;
+            }
+
+            main.flexbox {
+                display: flex;
+            }
+
+
+            @media screen and (max-width:1024px) {
+                main.inline-block div, main.float div, main.table div {
+                    width: 50%;
+                }
+            }
+
+            @media screen and (max-width:600px) {
+                main.inline-block div, main.float div, main.table div {
+                    width: 100%;
+                }
+            }
+            body#map {
+                width: 100%;
+                height: 100%;
+            }
+            div#map-container {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                display: none;
+            }
+            body#map #map-container {
+                display: block;
+                background-color: none;
+            }
+            body#map main {
+                display: none;
+            }
+        </style>
+    </head>
+    <body onload="onLoad();">
+        <header>
+            <h1>En voici une super page web !</h1>
+        </header>
+        <canvas width="200" height="200">
+            <p>Youpi un canvas!</p>
+        </canvas>
+        <main class="inline-block">
+            <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+            <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+            <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+        </main>
+        <main class="float">
+            <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+            <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+            <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+        </main>
+        <main class="table">
+            <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+            <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+            <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+            <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+        </main>
+        <main class="flexbox">
+            <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+            <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+            <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+        </main>
+        <div id="map-container"></div>
+        <button type="button" onclick="javascript:requestGeoloc();">Demander la géoloc</button>
+        <script type="text/javascript">
+            /**
+             * Request user Geoloc
+             */
+            function requestGeoloc()
+            {
+                if ("geolocation" in navigator) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        //Faire quelque chose avec la position
+                        loadGmap(position.coords.latitude, position.coords.longitude);
+                    }, function() {
+                        //Erreur l'utilisateur a refusé
+                        alert('Demande refusée!');
+                    });
+                } else {
+                  alert("Le service de géolocalisation n'est pas disponible sur votre ordinateur.");
+                }
+            }
+
+            /**
+             * Load Google Map API and display map
+             * @param  {string} lat Latitude
+             * @param  {string} lng Longitude
+             */
+            function loadGmap(lat, lng)
+            {
+                var script = document.createElement('script');
+                script.setAttribute('type', 'text/javascript');
+                script.src = "http://maps.googleapis.com/maps/api/js";
+                script.onload = function() {
+                    //Ici Google Map est chargé !
+                    document.body.setAttribute('id', 'map');
+                    var map = new google.maps.Map(document.getElementById('map-container'), {
+                        center: {lat: lat, lng: lng},
+                        zoom: 12
+                    });
+                    new google.maps.Marker({
+                        position: {lat: lat, lng: lng},
+                        map: map,
+                        title: 'Hello World!'
+                    });
+                };
+                document.body.appendChild(script);
+            }
+
+            function onLoad()
+            {
+                var canvas = document.getElementsByTagName('canvas')[0];
+                if( canvas.getContext ) {
+                    playWithContext(canvas.getContext('2d'));
+                    drawPicture(canvas.getContext('2d'));
+                } else {
+                    //Canvas n'est pas supporté ici
+                }
+
+                function playWithContext(ctx)
+                {
+                    ctx.fillStyle = "rgb(200,0,0)";
+                    ctx.fillRect (10, 10, 55, 50);
+                    ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+                    ctx.fillRect (30, 30, 55, 50);
+
+                    ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+                    ctx.fillRect(100,25,100,100);
+                    ctx.clearRect(120,45,60,60);
+                    ctx.strokeRect(125,50,50,50);
+                }
+                function drawPicture(ctx) {
+                    var img = new Image();
+                    img.onload = function(){
+                        for (var i=0;i<4;i++){
+                            for (var j=0;j<3;j++){
+                               ctx.drawImage(img,j*50,i*38,50,38);
+                            }
+                        }
+                    };
+                    img.src = 'https://mdn.mozillademos.org/files/5397/rhino.jpg';
+                }
+            }
+        </script>
+    </body>
+</html>
