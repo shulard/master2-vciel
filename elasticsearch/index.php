@@ -108,7 +108,7 @@ if( isset($_POST['search']) ) {
 //##############################################################################
 //Enregistrement mapping
 if( isset($_POST['mapping']) ) {
-    $url = ES_URL.'/'.$_POST['name'].'/_mapping/'.basename($_POST['data'], '.json');
+    $url = ES_URL.'/'.$_POST['name'].'/_mapping/'.basename($_POST['data'], '.json').'?include_type_name=true';
 
     ob_start();
     require __DIR__.'/mapping/'.$_POST['data'];
