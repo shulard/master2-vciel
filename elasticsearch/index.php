@@ -25,7 +25,7 @@ curl_setopt_array($h, [
 $nodeDetail = curl_exec($h);
 
 if( 200 !== curl_getinfo($h, CURLINFO_HTTP_CODE) ) {
-    exit('ElasticSearch n\'est pas démarré !');
+    exit('Elasticsearch n\'est pas démarré !');
 }
 
 curl_reset($h);
@@ -134,7 +134,7 @@ curl_close($h);
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>ElasticSearch demo</title>
+        <title>Elasticsearch demo</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
         <link rel="stylesheet" href="assets/prism.css" />
         <script type="text/javascript" src="assets/prism.js"></script>
@@ -142,7 +142,7 @@ curl_close($h);
     <body>
         <div class="jumbotron">
             <div class="container">
-                <h1>ElasticSearch <small><a href="<?= ES_URL ?>"><?= ES_URL ?></a></small></h1>
+                <h1>Elasticsearch <small><a href="<?= ES_URL ?>"><?= ES_URL ?></a></small></h1>
                 <pre><code class="language-json"><?= $nodeDetail ?></code></pre>
             </div>
         </div>
